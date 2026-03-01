@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Jesús Arturo | Portafolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -76,18 +76,32 @@
             border-color: #00ff9d;
             background-color: rgba(255,255,255,0.12);
         }
+
+        /* MEJORAS DE RESPONSIVIDAD */
+        @media (max-width: 768px) {
+            .hero-grid { grid-template-columns: 1fr !important; }
+            .nav-menu { display: none; }
+            .nav-menu.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #000000e6; padding: 20px; }
+            .section-padding { padding-top: 80px !important; padding-bottom: 80px !important; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR MEJORADO PARA MÓVIL -->
     <nav class="fixed top-0 w-full bg-black/70 backdrop-blur-lg z-50 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
             <div class="flex items-center">
                 <span class="text-3xl font-bold tracking-tighter title-font">PORTAFOLIO</span>
             </div>
             
-            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+            <!-- BOTÓN HAMBURGUESA -->
+            <button id="menu-btn" class="md:hidden text-3xl">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- MENÚ NORMAL (PC) -->
+            <div id="nav-menu" class="hidden md:flex items-center gap-10 text-sm font-medium">
                 <a href="#sobre" class="hover:text-[#00ff9d]">Sobre mí</a>
                 <a href="#habilidades" class="hover:text-[#00ff9d]">Habilidades</a>
                 <a href="#proyectos" class="hover:text-[#00ff9d]">Proyectos</a>
@@ -95,8 +109,8 @@
                 <a href="#contacto" class="hover:text-[#00ff9d]">Contacto</a>
             </div>
 
-            <!-- BOTÓN HABLEMOS → WHATSAPP -->
-            <a href="https://wa.me/5216648835845?text=Hola%20jesus arturo%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20desarrollo%20web.%20%C2%A1Gracias!"
+            <!-- BOTÓN HABLEMOS (WHATSAPP) -->
+            <a href="https://wa.me/5216648835845?text=Hola%20equipo%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20desarrollo%20web.%20%C2%A1Gracias!"
                target="_blank"
                class="btn-special px-6 py-3 bg-white text-black font-semibold rounded-2xl hover:bg-[#00ff9d] hover:text-black transition-all flex items-center gap-2 text-sm">
                 <i class="fas fa-paper-plane"></i>
@@ -106,7 +120,7 @@
     </nav>
 
     <!-- HERO -->
-    <section class="min-h-screen flex items-center pt-20 relative">
+    <section class="min-h-screen flex items-center pt-20 relative hero-grid">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div class="space-y-8">
                 <div class="inline-flex items-center gap-3 bg-black/70 border border-white/30 px-6 py-3 rounded-3xl text-sm">
@@ -114,13 +128,13 @@
                     Disponible para freelance
                 </div>
 
-                <h1 class="text-7xl md:text-8xl font-bold title-font leading-none tracking-tighter">
+                <h1 class="text-6xl md:text-8xl font-bold title-font leading-none tracking-tighter">
                     Jesús<br>Arturo
                 </h1>
                 
-                <p class="text-4xl font-medium">Programador</p>
+                <p class="text-3xl md:text-4xl font-medium">Programador</p>
                 
-                <p class="max-w-md text-xl">
+                <p class="max-w-md text-lg md:text-xl">
                     Desarrollador Full Stack de Tijuana, México 🇲🇽<br>
                     Creo experiencias digitales rápidas, modernas y funcionales.
                 </p>
@@ -136,7 +150,7 @@
             </div>
 
             <div class="relative flex justify-center">
-                <div class="relative w-[380px]">
+                <div class="relative w-[320px] md:w-[380px]">
                     <img src="https://picsum.photos/id/1011/600/600" alt="Jesús Arturo" class="w-full h-auto object-cover rounded-3xl shadow-2xl border-8 border-white/30">
                 </div>
             </div>
@@ -144,7 +158,7 @@
     </section>
 
     <!-- SOBRE MÍ -->
-    <section id="sobre" class="py-28 bg-black/60">
+    <section id="sobre" class="py-28 bg-black/60 section-padding">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-6xl title-font font-semibold mt-3">Sobre mí</h2>
@@ -165,7 +179,7 @@
     </section>
 
     <!-- HABILIDADES -->
-    <section id="habilidades" class="py-28 bg-black/40">
+    <section id="habilidades" class="py-28 bg-black/40 section-padding">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-6xl title-font font-semibold mt-3">Tecnologías que domino</h2>
@@ -209,7 +223,7 @@
     </section>
 
     <!-- PROYECTOS -->
-    <section id="proyectos" class="py-28 bg-black/60">
+    <section id="proyectos" class="py-28 bg-black/60 section-padding">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-6xl title-font font-semibold mt-3">Algunos proyectos que he construido</h2>
@@ -247,13 +261,15 @@
     </section>
 
     <!-- AGENDAR BETA -->
-    <section id="beta" class="py-28 bg-black/70">
+    <section id="beta" class="py-28 bg-black/70 section-padding">
         <div class="max-w-3xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-6xl title-font font-semibold mt-3">Agenda tu sesión Beta</h2>
                 <p class="mt-4 text-xl">Reserva la versión beta de tu próxima página web</p>
+                <p class="text-xs text-zinc-500 mt-2">Nota: La reserva es local al dispositivo</p>
             </div>
             <form id="betaForm" class="space-y-8 bg-zinc-900/60 backdrop-blur-xl p-10 rounded-3xl border border-white/10">
+                <!-- campos iguales -->
                 <div>
                     <label class="block text-sm mb-2">Nombre del negocio</label>
                     <input type="text" id="negocio" required class="form-input w-full px-8 py-6 rounded-3xl outline-none text-lg">
@@ -284,7 +300,7 @@
     </section>
 
     <!-- CONTACTO -->
-    <section id="contacto" class="py-28 bg-black/40">
+    <section id="contacto" class="py-28 bg-black/40 section-padding">
         <div class="max-w-3xl mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-6xl title-font font-semibold mt-3">Contacto</h2>
@@ -305,7 +321,7 @@
     </section>
 
     <!-- BURBUJA WHATSAPP -->
-    <div onclick="window.open('https://wa.me/5216648835845?text=Hola%20jesus arturo%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20desarrollo%20web.%20%C2%A1Gracias!', '_blank')" 
+    <div onclick="window.open('https://wa.me/5216648835845?text=Hola%20equipo%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20desarrollo%20web.%20%C2%A1Gracias!', '_blank')" 
          class="whatsapp-bubble fixed bottom-8 right-8 w-16 h-16 bg-[#25D366] hover:bg-[#20c05e] rounded-3xl flex items-center justify-center shadow-2xl cursor-pointer z-[9999] border-4 border-white/30">
         <i class="fab fa-whatsapp text-5xl text-white"></i>
     </div>
@@ -318,6 +334,14 @@
     </footer>
 
     <script>
+        // MENÚ MÓVIL
+        const menuBtn = document.getElementById('menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // FORMULARIO BETA
         const betaForm = document.getElementById('betaForm');
         const fechaInput = document.getElementById('fecha');
         fechaInput.min = new Date().toISOString().split('T')[0];
@@ -356,6 +380,7 @@
             alert("✅ ¡Sesión agendada! Te redirigí a WhatsApp con todos los datos.");
         });
 
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 if (this.getAttribute('href') !== '#') {
